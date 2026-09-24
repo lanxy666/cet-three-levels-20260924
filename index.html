@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#185adb">
+  <meta name="description" content="输入中文，查看日常、四级、六级三档英语表达。">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>三档词汇</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">三</div>
+        <div><strong>三档词汇</strong><small>中文秒查英文表达</small></div>
+      </div>
+      <div class="top-actions">
+        <button id="fontBtn" class="icon-btn" type="button" aria-label="放大文字">A+</button>
+        <button id="themeBtn" class="icon-btn" type="button" aria-label="切换深色模式">◐</button>
+        <button id="installBtn" class="install-btn" type="button">安装</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero card">
+        <div class="hero-copy">
+          <span class="eyebrow">离线词库 · 三档对照</span>
+          <h1>输入中文，马上找到合适英文</h1>
+          <p>手动输入，或点击麦克风说话。手机键盘上的麦克风也能直接听写。</p>
+        </div>
+        <form id="searchForm" class="search-box" autocomplete="off">
+          <label class="sr-only" for="queryInput">输入中文词或短句</label>
+          <input id="queryInput" type="search" inputmode="search" enterkeyhint="search" placeholder="例如：放弃、保护环境、提高效率" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button id="clearBtn" class="clear-btn hidden" type="button" aria-label="清空输入">×</button>
+          <button id="micBtn" class="mic-btn" type="button" aria-label="语音输入"><span aria-hidden="true">🎙</span></button>
+          <button class="search-btn" type="submit">查询</button>
+        </form>
+        <div class="input-note">📱 点击输入框后，可使用手机键盘麦克风听写</div>
+        <div id="quickRow" class="quick-row" aria-label="示例查询"></div>
+        <div id="statusBar" class="status-bar" role="status"></div>
+      </section>
+
+      <section id="results" class="results" aria-live="polite">
+        <article class="level-card daily" data-level="daily">
+          <header><span class="level-badge">日常版</span><span class="level-sub">自然、好开口</span></header>
+          <div class="result-body empty-state"><p>输入中文后显示日常表达</p></div>
+        </article>
+        <article class="level-card cet4" data-level="cet4">
+          <header><span class="level-badge">四级版</span><span class="level-sub">考试、写作常用</span></header>
+          <div class="result-body empty-state"><p>输入中文后显示四级表达</p></div>
+        </article>
+        <article class="level-card cet6" data-level="cet6">
+          <header><span class="level-badge">六级版</span><span class="level-sub">进阶、替换升级</span></header>
+          <div class="result-body empty-state"><p>输入中文后显示六级表达</p></div>
+        </article>
+      </section>
+
+      <section class="card lists-card">
+        <div class="section-head"><h2>最近查询</h2><button id="clearHistoryBtn" class="text-btn" type="button">清空</button></div>
+        <div id="historyList" class="chip-list"></div>
+      </section>
+
+      <section class="card lists-card">
+        <div class="section-head"><h2>我的收藏</h2><span id="favCount" class="muted">0条</span></div>
+        <div id="favoritesList" class="chip-list"></div>
+      </section>
+
+      <section class="card tips-card">
+        <h2>使用提示</h2>
+        <ul>
+          <li>单词和短句优先，完整长句只提供关键词拆解。</li>
+          <li>网页麦克风需要联网和HTTPS；失败时用键盘麦克风。</li>
+          <li>点击英文卡片可复制，点击 🔊 可让手机朗读。</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
